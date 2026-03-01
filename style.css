@@ -1,0 +1,144 @@
+:root {
+  color-scheme: dark;
+  --bg: #0c1223;
+  --panel: #161f3d;
+  --accent: #45d6ff;
+  --danger: #ff5072;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  background: radial-gradient(circle at top, #12224d, var(--bg) 50%);
+  color: #fff;
+}
+
+.game-shell {
+  margin: 0 auto;
+  max-width: 460px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-bottom: calc(10px + var(--safe-bottom));
+}
+
+.hud {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(5, 12, 24, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 8px;
+  font-weight: 600;
+}
+
+.canvas-wrap {
+  position: relative;
+  margin: 0 8px;
+  align-self: center;
+}
+
+#game {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: linear-gradient(#091127, #050910);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.overlay-btn,
+.overlay,
+#restartBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.overlay-btn {
+  z-index: 5;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #05101f;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.overlay {
+  z-index: 6;
+  top: 34%;
+  width: 85%;
+  text-align: center;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(8, 13, 27, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+#restartBtn {
+  bottom: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--danger);
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.pad {
+  display: flex;
+  gap: 10px;
+}
+
+.ctrl,
+.fire {
+  border: none;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.ctrl {
+  width: 76px;
+  height: 56px;
+}
+
+.fire {
+  min-width: 110px;
+  height: 56px;
+  background: linear-gradient(135deg, #ec4f7a, #a31de7);
+}
+
+.ctrl:active,
+.fire:active,
+.overlay-btn:active,
+#restartBtn:active {
+  transform: scale(0.98);
+}
